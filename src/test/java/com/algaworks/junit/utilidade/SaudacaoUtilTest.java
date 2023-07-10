@@ -8,10 +8,23 @@ import static org.junit.jupiter.api.Assertions.*;
 class SaudacaoUtilTest {
 
     @Test
-    public void saudar() {
+    public void saudacaoDia() {
         String saudacao = SaudacaoUtil.saudar(9);
         assertEquals("Bom dia", saudacao);
     }
+
+    @Test
+    public void saudacaoTarde() {
+        String saudacao = SaudacaoUtil.saudar(12);
+        assertEquals("Boa tarde", saudacao);
+    }
+
+    @Test
+    public void saudacaoNoite() {
+        String saudacao = SaudacaoUtil.saudar(18);
+        assertEquals("Boa noite", saudacao);
+    }
+
 
     @Test
     public void deveLancarException(){
