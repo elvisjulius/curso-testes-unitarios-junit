@@ -11,7 +11,7 @@ import java.util.List;
 class FiltroNumerosTest {
 
     @Test
-    public void deve_retornar_numeros_pares() {
+    public void dado_uma_lista_de_numeros_quando_filtrar_por_pares_entao_deve_retornar_apenas_numeros_pares() {
         List<Integer> numeros = Arrays.asList(1, 2, 3, 4);
         List<Integer> numerosParesEsperados = Arrays.asList(2, 4);
         List<Integer> resultadoFiltro = FiltroNumeros.numerosPares(numeros);
@@ -19,7 +19,7 @@ class FiltroNumerosTest {
     }
 
     @Test
-    void numerosImpares() {
+    void dado_uma_lista_de_numeros_quando_filtrar_por_impares_entao_deve_retornar_apenas_numeros_impares() {
         List<Integer> numeros = Arrays.asList(1, 2, 3, 4);
         List<Integer> numerosImparesEsperados = Arrays.asList(1, 3);
         List<Integer> resultadoFiltro = FiltroNumeros.numerosImpares(numeros);
