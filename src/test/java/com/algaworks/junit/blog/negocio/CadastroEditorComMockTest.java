@@ -38,7 +38,7 @@ public class CadastroEditorComMockTest {
    class CadastroComEditorValido{
 
         @Spy
-        Editor editor = EditorTestData.umEditorNovo();
+        Editor editor = EditorTestData.umEditorNovo().build();
         @BeforeEach
         void init(){
             Mockito.when(armazenamentoEditor.salvar(Mockito.any(Editor.class)))
@@ -102,11 +102,11 @@ public class CadastroEditorComMockTest {
         @Test
         void Dado_um_editor_valido_Quando_cadastrar_Entao_deve_lancar_exception(){
 
-            Mockito.when(armazenamentoEditor.encontrarPorEmail("elvis@email.com"))
+            Mockito.when(armazenamentoEditor.encontrarPorEmail("elvisjulius@email.com"))
                     .thenReturn(Optional.empty())
                     .thenReturn(Optional.of(editor));
 
-            Editor editorComEmailExistente = EditorTestData.umEditorNovo();
+            Editor editorComEmailExistente = EditorTestData.umEditorNovo().build();
 
             cadastroEditor.criar(editorComEmailExistente);
 
@@ -146,9 +146,10 @@ public class CadastroEditorComMockTest {
 
        @Test
        void Dado_um_editor_valido_Quando_editar_Entao_deve_alterar_um_editor_salvo(){
-           Editor editorAtualizado = EditorTestData.umEditorExistente();
-           editorAtualizado.setEmail("elvisjulius@email.com");
-           editorAtualizado.setNome("Elvis Julius");
+           Editor editorAtualizado = EditorTestData.umEditorExistente()
+                           .comEmail("elvis@email.com")
+                                   .comNome("Elvis Lopes")
+                   .build();
            cadastroEditor.editar(editorAtualizado);
            Mockito.verify(editor, times(1)).atualizarComDados(editorAtualizado);
 
@@ -162,7 +163,7 @@ public class CadastroEditorComMockTest {
 
     @Nested
     class EdicaoComEditorInexistente{
-        Editor editor = EditorTestData.umEditorComIdInexistente();
+        Editor editor = EditorTestData.umEditorComIdInexistente().build();
 
         @BeforeEach
         void init(){
