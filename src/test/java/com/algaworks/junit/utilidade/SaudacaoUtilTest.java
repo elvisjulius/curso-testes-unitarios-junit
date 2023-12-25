@@ -53,11 +53,9 @@ class SaudacaoUtilTest {
     public void dado_uma_hora_invalida_quando_saudar_deve_lancar_exception(){
         int horaInvalida = -10;
 
-        Executable chamadaInvalidaDeMetodo = () -> SaudacaoUtil.saudar(horaInvalida);
+       IllegalArgumentException e =  Assertions.catchThrowableOfType(() -> SaudacaoUtil.saudar(horaInvalida), IllegalArgumentException.class);
 
-        IllegalArgumentException e = assertThrows(IllegalArgumentException.class,chamadaInvalidaDeMetodo);
-
-        assertEquals("Hora inválida", e.getMessage());
+       Assertions.assertThat(e).hasMessage("Hora inválida");
     }
 
     @Test
