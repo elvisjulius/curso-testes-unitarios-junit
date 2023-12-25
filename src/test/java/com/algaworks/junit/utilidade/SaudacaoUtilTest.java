@@ -20,11 +20,13 @@ class SaudacaoUtilTest {
     public void dada_um_horario_de_manha_quando_saudar_entao_deve_retornar_bom_dia() {
         int horaValida = 9;
         String saudacao = SaudacaoUtil.saudar(horaValida);
+        String saudacaoCorreta = "Bom dia";
         assertEquals("Bom dia", saudacao);
 
         Assertions.assertThat(saudacao)
                 .withFailMessage("Saudação incorreta!")
-                .isEqualTo("Bom dia");
+                .as("Validando se a saudação é %s", saudacaoCorreta)
+                .isEqualTo(saudacaoCorreta);
     }
 
     @Test
